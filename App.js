@@ -1,17 +1,76 @@
+import { useState } from 'react'; 
 import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text,StyleSheet } from 'react-native';
+import { View, Text,StyleSheet,ScrollView, TouchableOpacity } from 'react-native';
 
 const Tab = createBottomTabNavigator();
-// homescreen
+const marinas = [
+  {
+    id: 1,
+    name: "Blue Beacon Marina",
+    lake: "Lake Couchiching / Lake Simcoe",
+    address: "693 Atherley Road, Orillia, ON",
+    phone: "705-325-2526",
+    lat: 44.6022,
+    lng: -79.4047,
+    gas: true,
+    pumpOut: true,
+    electricity: true,
+    showers: false,
+    wifi: false,
+    launchRamp: false,
+    restaurant: false,
+    priceRange: "$$$",
+  },
+  {
+    id: 2,
+    name: "Bridgeport Marina",
+    lake: "Lake Couchiching",
+    address: "434 Couchiching Point Rd, Orillia, ON",
+    phone: "705-326-7898",
+    lat: 44.5988,
+    lng: -79.4063,
+    gas: true,
+    pumpOut: true,
+    electricity: true,
+    showers: true,
+    wifi: false,
+    launchRamp: false,
+    restaurant: false,
+    priceRange: "$$",
+  },
+  {
+    id: 3,
+    name: "Port of Orillia",
+    lake: "Lake Couchiching",
+    address: "50 Centennial Drive, Orillia, ON",
+    phone: "705-326-6314",
+    lat: 44.6090,
+    lng: -79.4198,
+    gas: false,
+    pumpOut: false,
+    electricity: true,
+    showers: true,
+    wifi: true,
+    launchRamp: false,
+    restaurant: false,
+    priceRange: "$",
+  },
+];
+// home screen
 function HomeScreen(){
+  const [selectedMarina, setSelectedMarina] = useState(marinas[0]);
+  const [showPicker,setShowPicker] = useState(false);
+
   return (
     <View style = {styles.screen}> 
       <View style={{height:50}}/>
     {/* Header */}
     <View style={styles.header}>
       <Text style = {styles.logo}>Aftly</Text>
-      <Text style= {styles.marinaName}>Blue Beacon Marina</Text>
+      <TouchableOpacity onPress={() => setShowPicker(!showPicker)}>
+        <Text style={styles.marinaName}>{selectedMarina.name} ▾</Text>
+      </TouchableOpacity>
     </View>
     {/* Marina Card*/}
     <View style={styles.card}>
@@ -145,7 +204,7 @@ const styles = StyleSheet.create({
     color: '#9CA3AF',
     marginTop: 2,
   },
-  },
+  }
 )
 
 
