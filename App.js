@@ -8,8 +8,11 @@ function HomeScreen(){
   return (
     <View style = {styles.screen}> 
     {/* Header */}
-    
-      <Text style = {styles.title}>Marina Card</Text>
+    <View style={styles.header}>
+
+      <Text style = {styles.logo}>Aftly</Text>
+      <Text style= {styles.marinaName}>Blue Beacon Marina</Text>
+    </View>
     </View>
   );
 }
@@ -58,9 +61,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontsize: 24, 
+    fontSize: 24, 
     fontWeight: 'bold',
     color: '#111827',
+  
+  header: {
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingTop: 60,
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0F0F0',
+  },
+  logo: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#0EA5E9',
+  },
+  marinaName: {
+    fontSize: 13,
+    color: '#9CA3AF',
+    marginTop: 2,
+  },
   },
 })
 
