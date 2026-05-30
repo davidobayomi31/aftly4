@@ -1,12 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { view, Text,StyleSheet } from 'react-native';
+import { View, Text,StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 // homescreen
 function HomeScreen(){
   return (
-    <View style = {style.screen}> 
+    <View style = {styles.screen}> 
+    {/* Header */}
+    
       <Text style = {styles.title}>Marina Card</Text>
     </View>
   );
@@ -14,17 +16,17 @@ function HomeScreen(){
 //feed
 function FeedScreen(){
   return (
-    <view style = {style.screen}>
+    <View style = {styles.screen}>
       <Text style={styles.title}>Marina Feed</Text>
-    </view>
+    </View>
   );
 } 
 //where users log there trip
 function LogScreen () {
   return (
-    <view style={styles.screen}>
+    <View style={styles.screen}>
       <Text style={styles.title}>Log a Trip </Text>
-    </view>
+    </View>
   );
 }
 
@@ -33,13 +35,13 @@ export default function App(){
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
-          tabBarActivateTintColor: '#0EA5E9',
+          tabBarActiveTintColor: '#0EA5E9',
           tabBarInactiveTintColor: '#9CA3AF',
           tabBarStyle:{ borderTopColor: '#F0F0F0'},
           headerShown: false,
         }}> 
         <Tab.Screen name = "Home" component ={HomeScreen} />
-        <Tab.Screen name = "Feed" componet = {FeedScreen} />
+        <Tab.Screen name = "Feed" component = {FeedScreen} />
         <Tab.Screen name = "log" component = {LogScreen} />
 
         </Tab.Navigator>
@@ -48,7 +50,7 @@ export default function App(){
   );
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor:'#FFFFFF',
@@ -57,8 +59,8 @@ const style = StyleSheet.create({
   },
   title: {
     fontsize: 24, 
-    fontweight: bold,
-    color: '111827',
+    fontWeight: 'bold',
+    color: '#111827',
   },
 })
 
