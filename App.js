@@ -57,8 +57,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor:'#FFFFFF',
-    alignItems:'center',
-    justifyContent: 'center',
+  
   },
   title: {
     fontSize: 24, 
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
   header: {
     width: '100%',
     paddingHorizontal: 20,
-    paddingTop: 60,
+    paddingTop: 16,
     paddingBottom: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#F0F0F0',
