@@ -30,7 +30,7 @@ export default function FeedScreen() {
   const filteredPosts = posts.filter(post => {
     if (filter === 'All') return true;
     if (filter === 'Trips') return post.type === 'TRIP';
-    if (filter === 'Catches') return post.type === 'CATCH';
+    if (filter === 'Catches') return post.type === 'CATCH'; 
     if (filter === 'Check-ins') return post.type === 'CHECK';
   });
 
@@ -99,13 +99,19 @@ export default function FeedScreen() {
           <Text style={styles.postDescription}>{post.description}</Text>
 
           {post.type === 'CATCH' && (
-            <View style={styles.photoPlaceholder}>
-              <Text style={styles.photoPlaceholderText}>📷 Photo</Text>
-            </View>
-          )}
+            <Image
+            source={require('../assets/catch-bass.jpg')}
+             style={styles.catchPhoto}
+             resizeMode="cover"
+            />
+           )}
 
-          <TouchableOpacity style={styles.likeButton} onPress={() => toggleLike(post.id)}>
-            <Text style={styles.likeText}>{likes[post.id] ? '⚓ Anchored' : '⚓ Anchor'}</Text>
+          <TouchableOpacity 
+          style={[styles.likeButton, likes[post.id] && styles.likeButtonActive]} 
+          onPress={() => toggleLike(post.id)}>
+            <Text style={[styles.likeText, likes[post.id] && styles.likeTextActive]}>
+                {likes[post.id] ? '⚓ Anchored' : '⚓ Anchor'}
+            </Text>
           </TouchableOpacity>
         </View>
       ))}
@@ -235,4 +241,76 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#374151',
   },
+  marinaPicker: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  backgroundColor: '#F3F4F6',
+  borderRadius: 8,
+  borderWidth: 1,
+  borderColor: '#E5E7EB',
+  paddingVertical: 10,
+  paddingHorizontal: 14,
+  marginTop: 8,
+},
+marinaPickerText: {
+  fontSize: 15,
+  fontWeight: '600',
+  color: '#111827',
+},
+marinaPickerArrow: {
+  fontSize: 16,
+  color: '#6B7280',
+},
+picker: {
+  backgroundColor: '#F3F4F6',
+  borderWidth: 1,
+  borderColor: '#F0F0F0',
+  borderRadius: 12,
+  marginHorizontal: 16,
+  marginTop: 4,
+  shadowColor: '#000',
+  shadowOpacity: 0.08,
+  shadowRadius: 8,
+  elevation: 4,
+},
+pickerItem: {
+  padding: 16,
+  borderBottomWidth: 1,
+  borderBottomColor: '#F0F0F0',
+},
+pickerText: {
+  fontSize: 15,
+  fontWeight: '600',
+  color: '#111827',
+},
+pickerSub: {
+  fontSize: 12,
+  color: '#9CA3AF',
+  marginTop: 2,
+},
+catchPhoto: {
+  width: '100%',
+  height: 200,
+  borderRadius: 12,
+  marginBottom: 12,
+},
+likeButton: {
+  alignSelf: 'flex-start',
+  paddingVertical: 6,
+  paddingHorizontal: 14,
+  borderRadius: 20,
+  backgroundColor: '#F3F4F6',
+},
+likeButtonActive: {
+  backgroundColor: '#FEE2E2',
+},
+likeText: {
+  fontSize: 13,
+  fontWeight: '600',
+  color: '#374151',
+},
+likeTextActive: {
+  color: '#EF4444',
+},
 });
